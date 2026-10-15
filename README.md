@@ -29,6 +29,23 @@ By integrating **Platt-calibrated gradient boosted decision trees (LightGBM)** w
 
 The platform features an editorial, high-contrast dark dashboard built with **Streamlit**, custom **CSS design tokens**, and **Plotly** visualizations:
 
+### 🖥️ Dashboard Previews
+
+<div align="center">
+  <img src="assets/hero_kpi_dashboard.png" alt="AETHEL Hero & KPI Monograph" width="95%"/>
+  <p><em>Figure 1: Executive Briefing Hero Masthead, Champion LightGBM Shield & Population Risk Index Cards</em></p>
+</div>
+
+<div align="center">
+  <img src="assets/patient_profiler_treeshap.png" alt="Patient Clinical Profiler & TreeSHAP" width="95%"/>
+  <p><em>Figure 2: Individualized Patient Clinical Dossier, Risk Dial & Diverging TreeSHAP Feature Breakdown</em></p>
+</div>
+
+<div align="center">
+  <img src="assets/whatif_simulator.png" alt="Transitional Care Simulator" width="95%"/>
+  <p><em>Figure 3: Bedside 'What-If' Intervention Simulator with Real-Time Risk Delta & Avoided Penalty Cost Offset</em></p>
+</div>
+
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │                              AETHEL // DASHBOARD TOPOLOGY                              │

@@ -620,6 +620,15 @@ with tab_cohort:
 
     st.dataframe(table_data, width='stretch', height=460)
 
+    # Operational CSV Export Button
+    st.download_button(
+        label="📥 Export Filtered Triage Queue (CSV)",
+        data=filtered_df.to_csv(index=False),
+        file_name=f"inpatient_risk_triage_{len(filtered_df)}_patients.csv",
+        mime="text/csv",
+        help="Export current filtered patient list with risk scores for hospital care navigation teams."
+    )
+
     st.markdown(
         """
         <div style='background: rgba(229, 192, 123, 0.08); border: 1px solid rgba(229, 192, 123, 0.25); border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 0.85rem; color: #CBD5E1;'>
@@ -909,6 +918,41 @@ with tab_profiler:
                 """,
                 unsafe_allow_html=True,
             )
+
+        # Printable Clinical Dossier Export Button
+        dossier_md = f"""# CLINICAL READMISSION RISK DOSSIER // AETHEL HEALTH
+Generated for Patient #{patient_dict.get('patient_nbr', 'N/A')} (Encounter #{patient_dict.get('encounter_id', 'N/A')})
+
+## Clinical Overview
+- **Predicted 30-Day Readmission Risk:** {predicted_prob*100:.1f}% [{tier_info['tier'].upper()}]
+- **Age Stratum:** {patient_dict.get('age', 'N/A')}
+- **Gender:** {patient_dict.get('gender', 'N/A')}
+- **Length of Hospital Stay:** {patient_dict.get('time_in_hospital', 0)} days
+- **Primary Diagnosis:** {patient_dict.get('primary_diag_category', 'N/A')}
+- **Discharge Destination:** {patient_dict.get('discharge_disposition', 'Home')}
+- **Prior Inpatient Admissions (Past 12m):** {patient_dict.get('number_inpatient', 0)}
+- **Total Concurrent Medications:** {patient_dict.get('num_medications', 0)}
+- **Insulin Regimen:** {patient_dict.get('insulin', 'No')}
+- **Inpatient HbA1c Status:** {patient_dict.get('A1Cresult', 'None')}
+
+---
+## Key Risk Drivers (TreeSHAP Attribution)
+"""
+        for c in contributions:
+            dossier_md += f"- **{c['display_name']}:** {c['impact']:+.1f}% readmission probability delta\n"
+
+        dossier_md += "\n---\n## Tailored Transitional Care Action Plan\n"
+        for item in action_items:
+            dossier_md += f"### [{item['priority']}] {item['title']}\n{item['desc']}\n*Clinical Evidence:* {item.get('evidence', '')}\n\n"
+
+        st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+        st.download_button(
+            label="📥 Export Patient Clinical Dossier (Markdown)",
+            data=dossier_md,
+            file_name=f"clinical_dossier_patient_{patient_dict.get('patient_nbr', 'unknown')}.md",
+            mime="text/markdown",
+            help="Download printable clinical summary and discharge care protocol for medical chart review."
+        )
 
 
 # ==============================================================================
