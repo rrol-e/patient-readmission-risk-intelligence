@@ -1,0 +1,639 @@
+/* ==============================================================================
+   AETHEL // CLINICAL INTELLIGENCE MONOGRAPH & EXECUTIVE RISK DOSSIER
+   High-End Editorial Dark Theme for Healthcare Predictive Analytics
+   Fonts: Fraunces (Display/Editorial), Sora (UI/Body), DM Mono (Metrics/Data)
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Base Obsidian & Canvas Palette */
+    --bg-canvas: #06090D;
+    --bg-surface: #0B0F15;
+    --bg-card: #10161F;
+    --bg-card-hover: #161F2C;
+    --bg-elevated: #1A2331;
+    
+    /* Fine Hairline Borders & Dividers */
+    --border-hairline: rgba(226, 206, 175, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-gold: rgba(229, 192, 123, 0.40);
+    --border-emerald: rgba(16, 185, 129, 0.40);
+    --border-rose: rgba(244, 63, 94, 0.40);
+    
+    /* Editorial Accent Palette */
+    --accent-gold: #E5C07B;
+    --accent-gold-light: #F3D39B;
+    --accent-gold-glow: rgba(229, 192, 123, 0.18);
+    
+    --accent-emerald: #10B981;
+    --accent-emerald-light: #34D399;
+    --accent-emerald-glow: rgba(16, 185, 129, 0.18);
+    
+    --accent-rose: #F43F5E;
+    --accent-rose-light: #FB7185;
+    --accent-rose-glow: rgba(244, 63, 94, 0.18);
+    
+    --accent-amber: #F59E0B;
+    --accent-amber-light: #FCD34D;
+    --accent-amber-glow: rgba(245, 158, 11, 0.18);
+    
+    --accent-cyan: #06B6D4;
+    
+    /* High-Legibility Editorial Typography */
+    --text-hero: #FDFCF9;
+    --text-primary: #F1EFEA;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
+    
+    /* Fonts */
+    --font-display: 'Fraunces', 'Newsreader', Georgia, serif;
+    --font-ui: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+}
+
+/* Global Reset & Base Canvas */
+html, body {
+    background-color: var(--bg-canvas) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-ui) !important;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+}
+
+/* Ensure Streamlit Main Containers are Dark and Seamless */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stHeader"] {
+    background-color: var(--bg-canvas) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Subtle Technical Ambient Grid Background on Main Content */
+[data-testid="stAppViewContainer"]::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        radial-gradient(rgba(229, 192, 123, 0.035) 1px, transparent 1px),
+        radial-gradient(rgba(16, 185, 129, 0.025) 1px, transparent 1px);
+    background-size: 36px 36px, 72px 72px;
+    background-position: 0 0, 18px 18px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Top Subtle Atmospheric Radial Glows */
+[data-testid="stAppViewContainer"]::after {
+    content: "";
+    position: fixed;
+    top: -100px;
+    right: 5%;
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(229, 192, 123, 0.06) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
+}
+
+.main .block-container {
+    max-width: 1380px !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 4rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sidebar Custom Styling */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-surface) !important;
+    border-right: 1px solid var(--border-hairline) !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 2rem !important;
+}
+
+/* Editorial Masthead Section */
+.editorial-masthead {
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.masthead-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.masthead-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    box-shadow: 0 0 8px var(--accent-gold);
+}
+
+.editorial-title {
+    font-family: var(--font-display) !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    color: var(--text-hero) !important;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px 0 !important;
+}
+
+.editorial-title em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-gold);
+    text-shadow: 0 0 25px rgba(229, 192, 123, 0.25);
+}
+
+.editorial-subdeck {
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 820px;
+    margin: 0;
+}
+
+/* Live Surveillance Beacon */
+.live-beacon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 9999px;
+    padding: 4px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--accent-emerald-light);
+    letter-spacing: 0.08em;
+    margin-top: 12px;
+}
+
+.beacon-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Champion Model Shield */
+.champion-shield {
+    background: linear-gradient(145deg, rgba(20, 27, 37, 0.95) 0%, rgba(13, 18, 25, 0.98) 100%);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
+    padding: 22px 24px;
+    position: relative;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(229, 192, 123, 0.2);
+    overflow: hidden;
+}
+
+.champion-shield::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.champion-shield-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.champion-shield-title {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-hero);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.champion-metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-hairline);
+}
+
+.shield-metric-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.shield-metric-name {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.shield-metric-value {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-top: 2px;
+}
+
+/* Executive Index KPI Cards */
+.editorial-kpi-card {
+    background: linear-gradient(160deg, rgba(16, 22, 31, 0.95) 0%, rgba(10, 14, 20, 0.98) 100%);
+    border: 1px solid var(--border-hairline);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.editorial-kpi-card:hover {
+    border-color: var(--border-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.7), 0 0 20px -5px var(--accent-gold-glow);
+}
+
+.editorial-kpi-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(226, 206, 175, 0.25), transparent);
+}
+
+.kpi-numeral {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.9;
+}
+
+.kpi-label {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.kpi-figure {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-hero);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.kpi-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.pill-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.pill-emerald {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-emerald-light);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.pill-rose {
+    background: rgba(244, 63, 94, 0.15);
+    color: var(--accent-rose-light);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.pill-amber {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-amber-light);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.pill-gold {
+    background: rgba(229, 192, 123, 0.15);
+    color: var(--accent-gold-light);
+    border: 1px solid rgba(229, 192, 123, 0.35);
+}
+
+/* Streamlit Tabs - Bespoke Editorial Luxury Bar */
+.stTabs [data-baseweb="tab-list"] {
+    background: rgba(11, 15, 21, 0.85) !important;
+    border: 1px solid var(--border-hairline) !important;
+    border-radius: 10px !important;
+    padding: 6px !important;
+    gap: 6px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    margin-bottom: 28px !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-family: var(--font-ui) !important;
+    font-size: 0.86rem !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    border-radius: 8px !important;
+    padding: 10px 18px !important;
+    transition: all 0.25s ease !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--text-hero) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(229, 192, 123, 0.18) 0%, rgba(20, 27, 37, 0.95) 100%) !important;
+    color: var(--accent-gold) !important;
+    border: 1px solid var(--border-gold) !important;
+    box-shadow: 0 2px 12px rgba(229, 192, 123, 0.15) !important;
+}
+
+/* Section Header Typography */
+.section-headline {
+    font-family: var(--font-display) !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: var(--text-hero) !important;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px 0 !important;
+}
+
+.section-caption {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Chart Container Box */
+.editorial-chart-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    margin-bottom: 20px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.chart-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-hero);
+}
+
+.chart-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Clinical Dossier Patient Card */
+.patient-dossier-card {
+    background: linear-gradient(145deg, rgba(16, 22, 31, 0.95) 0%, rgba(10, 14, 20, 0.98) 100%);
+    border: 1px solid var(--border-hairline);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.dossier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.dossier-id {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-hero);
+}
+
+.dossier-meta {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.dossier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 18px;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+}
+
+.dossier-cell-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+}
+
+.dossier-cell-value {
+    font-weight: 600;
+    color: var(--text-hero);
+}
+
+/* Clinical Action Protocol Card */
+.clinical-action-card {
+    background: rgba(16, 22, 31, 0.7);
+    border: 1px solid var(--border-hairline);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.clinical-action-card:hover {
+    background: rgba(22, 31, 44, 0.85);
+    border-color: var(--border-gold);
+    transform: translateX(3px);
+}
+
+.action-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.action-title {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-hero);
+}
+
+.action-desc {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Input Fields & Controls Custom Styling */
+div[data-baseweb="select"] > div {
+    background-color: #0E141D !important;
+    border-color: var(--border-hairline) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+}
+
+div[data-baseweb="select"] > div:hover {
+    border-color: var(--border-gold) !important;
+}
+
+input[type="text"], input[type="number"], .stTextInput > div > div > input {
+    background-color: #0E141D !important;
+    border: 1px solid var(--border-hairline) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    font-family: var(--font-ui) !important;
+}
+
+input:focus {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 0 1px var(--accent-gold) !important;
+}
+
+/* Checkboxes & Radios */
+.stCheckbox label span {
+    font-family: var(--font-ui);
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+/* Dataframe & Tables */
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border-hairline) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Staggered Reveal Animations */
+.reveal-1 { animation: fadeInSlideUp 0.5s ease-out 0.05s both; }
+.reveal-2 { animation: fadeInSlideUp 0.5s ease-out 0.15s both; }
+.reveal-3 { animation: fadeInSlideUp 0.5s ease-out 0.25s both; }
+.reveal-4 { animation: fadeInSlideUp 0.5s ease-out 0.35s both; }
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide Default Streamlit Clutter */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}

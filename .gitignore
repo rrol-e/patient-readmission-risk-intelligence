@@ -1,0 +1,47 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# Environments & Virtual Envs
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Caches & Logs
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+.ipynb_checkpoints/
+
+# Streamlit Local Secrets
+.streamlit/secrets.toml
+
+# Operating System & IDE metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary data downloads (can be regenerated via src/download_data.py)
+data/raw/*.zip
+data/raw/*.tar.gz
+
+# Ensure Model Artifacts & Test Cohort Predictions are preserved for Cloud Deployment
+!models/*.pkl
+!models/*.parquet
+!models/*.json
